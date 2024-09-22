@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+# Gmail Organizer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Gmail Organizer is a tool designed to help users manage their Gmail accounts more efficiently by filtering and organizing emails based on a user-defined list of allowed sender addresses. This app allows users to focus on important emails by only displaying messages from approved senders.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Set up a list of allowed email addresses
+- Filter incoming emails to show only those from allowed senders
+- Add new email addresses to the allowed list
+- Remove email addresses from the allowed list
+- Backend integration for persistent storage of allowed email lists
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Clone the repository:
+```javascript
+    git clone https://github.com/yourusername/gmail-organizer.git
+```
+2. Navigate to the project directory:
+```javascript
+    cd gmail-organizer
+```
+3. Install dependencies:
+```javascript
+    npm install
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Usage
 
-### `npm test`
+To use the Gmail Organizer, you'll need to set up both the frontend and backend components.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Backend Setup
 
-### `npm run build`
+1. Ensure you have a backend server running on `http://localhost:5001`.
+2. The backend should support the following endpoints:
+- GET `/user/:userId/allowed-emails`
+- POST `/user/:userId/allowed-emails`
+- DELETE `/user/:userId/allowed-emails`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Frontend Usage
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The `filestorage.js` file provides functions to interact with the backend:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `getAllowedEmails(userId)`: Retrieves the list of allowed email addresses for a user.
+- `addAllowedEmail(userId, email)`: Adds a new email address to the allowed list.
+- `removeAllowedEmail(userId, email)`: Removes an email address from the allowed list.
 
-### `npm run eject`
+Example usage:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```javascript
+import { getAllowedEmails, addAllowedEmail, removeAllowedEmail } from './filestorage';
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+// Get allowed emails
+const allowedEmails = await getAllowedEmails('user123');
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+// Add a new allowed email
+await addAllowedEmail('user123', 'newuser@example.com');
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+// Remove an allowed email
+await removeAllowedEmail('user123', 'olduser@example.com');
+```
 
-## Learn More
+## How It Works
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Users set up their list of allowed email addresses through the app interface.
+2. The app connects to the user's Gmail account        (implementation details to be added).
+3. When fetching emails, the app filters the inbox to display only emails from the allowed list of senders.
+4. Users can easily manage their allowed list, adding or removing email addresses as needed.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contributing
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-### Code Splitting
+## License
+[Add your chosen license here]
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contact
+[Add your contact information here]
