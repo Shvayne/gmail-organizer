@@ -1,0 +1,27 @@
+{
+  "118031518354821949486": {
+    "allowedEmails": [
+      "support@jobberman.com",
+      "no-reply@kuda.com"
+    ]
+  },
+  "111772238041999093012": {
+    "allowedEmails": [
+      "help@test.com",
+      "another@test.com",
+      "newsletter@screenrant.com"
+    ]
+  },
+  "test_user": {
+    "categories": [
+      {
+        "name": "Friends",
+        "allowedEmails": []
+      },
+      {
+        "name": "Work",
+        "allowedEmails": []
+      }
+    ]
+  }
+}
