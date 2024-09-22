@@ -1,5 +1,7 @@
 # Gmail Organizer
 
+![Picture of app](src/assets/screenshot.png)
+
 Gmail Organizer is a tool designed to help users manage their Gmail accounts more efficiently by filtering and organizing emails based on a user-defined list of allowed sender addresses. This app allows users to focus on important emails by only displaying messages from approved senders.
 
 ## Features
