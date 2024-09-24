@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "axios"; //make HTTPS requests
 
 export const getEmailsFromAllowedSenders = async (
   accessToken,

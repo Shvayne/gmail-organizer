@@ -39,6 +39,14 @@ function App() {
 
   const bgColor = useColorModeValue("gray.50", "gray.900");
 
+  /**
+   * afterLogin - After a user logs in, this function fetches 
+   * the allowed emails from storage and then 
+   * retrieves emails from allowed senders.
+   * It uses the Gmail API (getEmailsFromAllowedSenders) 
+   * to get email message IDs and fetches email details
+   * (getEmailDetailsById).
+   */
   const afterLogin = async (user, googleId) => {
     const fetchedAllowedEmails = await getAllowedEmails(googleId);
     setAllowedEmails(fetchedAllowedEmails);
@@ -58,6 +66,13 @@ function App() {
     setLoadingEmails(false);
   };
 
+  /**
+   * This hook runs every time the user state changes.
+   * It fetches the user profile from Google, sets the profile,
+   * and calls afterLogin to initialize the app with allowed 
+   * emails and Gmail data.
+   * 
+   */
   useEffect(() => {
     if (user) {
       axios
@@ -79,6 +94,12 @@ function App() {
     }
   }, [user]);
 
+
+  /**
+   * handleAddAllowedEmail- This function adds a new email 
+   * to the allowed list by calling addAllowedEmail,
+   *  updates the state,  and refreshes the emails list.
+   */
   const handleAddAllowedEmail = async () => {
     if (newAllowedEmail && !allowedEmails.includes(newAllowedEmail)) {
       const updatedAllowedEmails = await addAllowedEmail(
@@ -90,6 +111,11 @@ function App() {
       setNewAllowedEmail("");
     }
   };
+
+  /**
+   * handleRemoveAllowedEmail -  removes an email from the allowed list
+   *  by calling removeAllowedEmail and refreshes the state.
+   */
 
   const handleRemoveAllowedEmail = async (emailToRemove) => {
     const updatedAllowedEmails = await removeAllowedEmail(
